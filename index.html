@@ -1,0 +1,682 @@
+<!-- Clerkxikon -->
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clerkxikon</title>
+<style>
+
+body {
+font-family: arial, sans-serif;
+background-color: #F5F5F5;
+text-align: center;
+margin: 0px 0px 20px 0px;
+}
+
+.main{
+display: flex;
+flex-direction: column;
+margin: 0px auto; 
+gap: 10px;
+max-width: 97.5%;
+}
+
+.title{
+background-color: #2c3e50;
+color: white;
+height: auto;
+padding-bottom: 5px;
+margin-bottom: 15px;
+}
+
+.title h1{
+font-weight: bold;
+margin-bottom: 15px;}
+
+.title h4{
+font-weight: normal;
+padding-bottom: 10px;
+margin-top: 5px;}
+
+#Suche{
+width: 35%;
+padding: 5px 0px 5px 12px;
+font-size: 16px;
+margin: 10px auto;
+height: 37px;
+border-radius: 8px;
+border-style: solid;
+-webkit-appearance: none;
+border: 1px solid #ccc;}
+
+.button-group{
+display: flex; 
+flex-direction: column;
+gap: 0px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+border-radius: 8px;
+overflow: hidden;
+margin: 10px;
+} 
+
+.button-group button{
+font-size: 17px;
+height: 50px;
+text-align: left;
+background-color: #9BAEC3;
+border: none;
+cursor: pointer;
+transition: 0.3s ease;
+padding: 10px;
+padding-left: 15px;
+}
+
+.button-group button:hover{
+background-color: #3d4c5b;
+color: white;}
+
+.Erklaerung{
+background-color: white;
+margin-top: 0px;
+border-radius: 0px 0px 10px 10px;
+padding: 15px 20px;
+border-top: 1px solid #253443;
+}
+
+.Erklaerung p{
+text-align: left;
+padding: 5px;
+margin: 8px 0;}
+
+.Erklaerung p strong{
+color: #2c3e50;}
+
+.Eintrag {
+display: flex;
+flex-direction: column;
+border-radius: 20px;
+background-color: white;
+width: 600px;
+height: 300px;
+gap: 10px;
+text-align: left;
+margin: 0px auto;
+margin-top: 20px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+padding: 20px;}
+
+.Eintrag h3{
+margin: 0px; 
+padding-bottom: 10px;
+width: 100%}
+
+.Eintrag input{
+border-radius: 10px;
+border: 1px solid #ccc;
+height: 35px;
+}
+
+#Begriff{
+font-size: 16px;
+padding: 5px;
+padding-left: 10px;}
+
+.Eintrag textarea{
+border-radius: 10px;
+resize: vertical;
+border: 1px solid #ccc;
+padding: 10px;
+font-family: arial, sans-serif;
+font-size: 16px
+}
+
+.Eintrag button{
+margin-right: 480px;
+margin-top: 20px;
+height: 40px;
+background-color: #2c3e50;
+color: white;
+border-radius: 10px;
+border: 1px solid #ccc;
+cursor: pointer;
+transition: 0.3s ease;
+font-size: 16px;
+}
+
+.Eintrag button:hover{
+background-color: #34495e;
+}
+
+.Erklaerung {
+  display: none;
+}
+
+.eintrag-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.eintrag-actions button {
+  margin-right: 0;
+  flex: 1;
+}
+
+.erklaerung-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.erklaerung-actions button {
+  padding: 5px 10px;
+  font-size: 14px;
+  height: auto;
+  margin: 0;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.edit-btn {
+  background-color: #f39c12;
+}
+
+.edit-btn:hover {
+  background-color: #d35400;
+}
+</style>
+</head>
+
+<body>
+<div class="main">
+	<div class="title">
+	<h1>Das Clerkxikon</h1>
+	<h4>Juristisch - Deutsch</h4>
+	</div>
+	
+	<input id="Suche" type="text" placeholder="Begriff suchen..."/>
+
+<div class="button-group" data-id="1">
+  <button>Nach sorgfältiger Prüfung...</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Da hat jemand die Dokumente ganz genau gelesen, jetzt wird mir bestimmt Gerechtigkeit zu teil!</p>
+    <p><strong>Was Juristen meinen:</strong> Wir haben uns das Dokument nicht angeguckt – wir machen sowieso, was wir wollen.</p>
+    <p><strong>Hintergrund:</strong> Klingt seriös, soll Objektivität vermitteln – auch wenn die Entscheidung schon vorher feststand.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="2">
+  <button>Artikel 20 Absatz 4 – "Gegen jeden,…"</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Wenn nix anderes mehr geht, dürfen wir uns gegen alle wehren, die den Rechtsstaat abschaffen wollen.</p>
+    <p><strong>Was Juristen meinen:</strong> Gegen jeden - aber nicht gegen uns. Wir sind allmächtig und keiner kann uns was.</p>
+    <p><strong>Hintergrund:</strong> Soll den schein von Demokratie wahren, in echt ist jeder aber nicht jeder .</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="3">
+  <button>Die Angelegenheit ist damit erledigt.</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Na toll. Ich krieg also keine Hilfe mehr. Egal was ich sage.</p>
+    <p><strong>Was Juristen meinen:</strong> Schreib uns bitte nicht mehr. Selbst wenn du recht hast – wir sind raus.</p>
+    <p><strong>Hintergrund:</strong> Standardfloskel, um Diskussionen zu beenden, ohne je eine geführt zu haben. Oft das finale Wort in Beschwerdeverfahren, Mahnprozessen oder wenn Institutionen genervt sind, dass sich jemand wehrt.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ab data-id="4" -->
+<div class="button-group" data-id="4">
+  <button>... ohne Anerkennung einer Rechtspflicht</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Okay, die zahlen. Ich hab wohl Recht gehabt!</p>
+    <p><strong>Was Juristen meinen:</strong> Wir zahlen – aber nur, damit du ruhig bist. Nicht, weil du recht hast.</p>
+    <p><strong>Hintergrund:</strong> Dient dazu, keine rechtlichen Verpflichtungen oder Schuldeingeständnisse abzuleiten.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="5">
+  <button>Einzelfall</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Oha, das klingt nach einem Ausnahmefall – wird bestimmt genauer geprüft!</p>
+    <p><strong>Was Juristen meinen:</strong> Wir machen keine Fehler. Der Staat macht keine Fehler. Du bist schuld.</p>
+    <p><strong>Hintergrund:</strong> Wird verwendet, um strukturelle Mängel zu entpolitisieren, zu entjuristifizieren und in die private Verantwortung abzuwälzen.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="6">
+  <button>Dafür sind wir nicht zuständig.</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Ich hab offensichtlich den falschen Ansprechpartner erwischt. Wieder bei Null.</p>
+    <p><strong>Was Juristen meinen:</strong> Wir sind gerade sehr mit Kaffeetrinken beschäftigt und haben keinen Bock auf dich – frag doch mal jemand anderen, vielleicht haben die auch keine Lust.</p>
+    <p><strong>Hintergrund:</strong> Ein juristischer Dauerbrenner zur Vermeidung jeder Verantwortung. Wird gern benutzt, um Menschen im Kreis zu schicken, bis sie erschöpft aufgeben oder versehentlich einen Fehler machen, den man dann als Ablehnungsgrund nutzen kann.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="7">
+  <button>Verantwortung</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Wenn etwas schiefläuft, sollte jemand den Kopf hinhalten – oder zumindest was daraus lernen.</p>
+    <p><strong>Was Juristen meinen:</strong> Verantwortung? Fremdbegriff – in der Ausbildung kam das nicht vor.</p>
+    <p><strong>Hintergrund:</strong> Verantwortung wird in juristischen Kreisen gerne wie ein heißer Kartoffelsack weitergereicht – idealerweise rückstandslos. Ob Verwaltung, Justiz oder Behörde: Schuld ist meist der Bürger. Oder irgendwas anderes, nur nicht man selbst.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="8">
+  <button>Dienstaufsichtsbeschwerde</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Ich wehr mich – da schaut bestimmt jemand neutral drauf.</p>
+    <p><strong>Was Juristum meinen:</strong> Wir haben uns selbst überprüft und keinerlei Fachverhalten festgestellt.</p>
+    <p><strong>Hintergrund:</strong> Eine Krähe hackt der anderen kein Auge aus.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="9">
+  <button>Formal korrekt</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Aber inhaltlich ist doch ganz viel falsch... Was soll ich denn jetzt machen?</p>
+    <p><strong>Was Juristum meinen:</strong> Inhalt egal – Hauptsache, das Deckblatt war ordentlich gelocht.</p>
+    <p><strong>Hintergrund:</strong> Wird verwendet, um sich elegant aus inhaltlicher Verantwortung zu ziehen.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="10">
+  <button>In dubio pro reo</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Im Zweifel für den Angeklagten.</p>
+    <p><strong>Was Juristum meinen:</strong> In dubio pro fisco – im Zweifel für den Staat.</p>
+    <p><strong>Hintergrund:</strong> Klingt schön rechtsstaatlich, wird aber oft übergangen, sobald ein Bauchgefühl oder ein Verdacht reicht. Beweislastumkehr spart Personalkosten.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="11">
+  <button>Im Rahmen unserer Möglichkeiten</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Die tun ihr Bestes, auch wenn's schwierig ist.</p>
+    <p><strong>Was Juristen meinen:</strong> Unsere Möglichkeiten sind begrenzt - sprich wir können nix tun.</p>
+    <p><strong>Hintergrund:</strong> Eine elegante Ausrede für Untätigkeit – klingt engagiert, bedeutet aber: "Wir machen nix."</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="12">
+  <button>Zur Kenntnis genommen</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Und weiter...?</p>
+    <p><strong>Was Juristen meinen:</strong> Ablage P. Keine Antwort. Keine Hilfe, Kein Problem.</p>
+    <p><strong>Hintergrund:</strong> Klingt nach Reaktion – ist aber die höflichste Form des Ignorierens.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="13">
+  <button>Es wird auf die Stellungnahme vom ... verwiesen</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Die kenne ich schon...</p>
+    <p><strong>Was Juristen meinen:</strong> Wir haben keine Lust Energie in eine Antwort zu stecken, wir lesen das hier nicht noch mal durch.</p>
+    <p><strong>Hintergrund:</strong> Diese Formel verhindert jede weitere Auseinandersetzung. Praktisch bei Widersprüchen – oder Langeweile.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="14">
+  <button>Die Richter sind unabhängig...</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> ... und nur dem Gesetze unterworfen.</p>
+    <p><strong>Was Juristen meinen:</strong> Richer können tun und lassen, was sie wollen. Sie haben die Macht.</p>
+    <p><strong>Hintergrund:</strong> Wird gerne genutzt um Handlungen von Richtern zu rechtfertigen, da sie angeblich unabhängig von allem sind.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="15">
+  <button>Rechtliches Gehör</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Ich werde angehört, bevor man über mich entscheidet.</p>
+    <p><strong>Was Antikin meinen:</strong> Sie dürfen was sagen – wir ignorieren's dann in aller Form korrekt.</p>
+    <p><strong>Hintergrund:</strong> Wahrt den Anschein von Demokratie, hat aber in der Praxis keine wirkliche Funktion.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="button-group" data-id="16">
+  <button>Bearbeitungsfrist</button>
+  <div class="Erklaerung">
+    <p><strong>Was die Leute denken:</strong> Ich hab eine Woche Zeit – das ist knapp, ich hab noch einen Job - wie soll ich das machen?</p>
+    <p><strong>Was Juristum meinen:</strong> Wir melden uns...irgendwann. Vielleicht.Wir haben zu viel mit Kaffeetrinken zu tun.</p>
+    <p><strong>Hintergrund:</strong> Bürger bekommen Fristen mit Sekundenkleber. Behörden hingegen operieren nach dem Prinzip der geologischen Zeitrechnung.</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="Eintrag">
+  <h3>Neuen Eintrag hinzufügen</h3>
+  <input id="Begriff" placeholder="Begriff*" required>
+  <textarea id="Erklaerung" rows="6">Was die Leute denken: 
+Was Juristen meinen: 
+Hintergrund: </textarea>
+  <div class="eintrag-actions">
+    <button id="hinzufuegen-btn">Hinzufügen</button>
+    <button id="speichern-btn" style="display:none;">Speichern</button>
+    <button id="abbrechen-btn" style="display:none;">Abbrechen</button>
+  </div>
+</div>
+
+<script>
+
+const STORAGE_KEY = 'clerkxikon-eintraege';
+let currentEditId = null;
+
+<!-- Initialisierung -->
+loadEntries();
+setupEventListeners();
+setupInitialEntries();
+
+<!-- Event-Listener -->
+function setupEventListeners() {
+  document.getElementById('Suche').addEventListener('input', () => {
+    const suchbegriff = document.getElementById('Suche').value.toLowerCase();
+    const eintraege = document.querySelectorAll('.button-group:not(.editing)');
+
+    eintraege.forEach(eintrag => {
+      const buttonText = eintrag.querySelector('button').textContent.toLowerCase();
+      eintrag.style.display = buttonText.includes(suchbegriff) ? 'flex' : 'none';
+    });
+  });
+
+  document.getElementById('hinzufuegen-btn').addEventListener('click', addEntry);
+  document.getElementById('speichern-btn').addEventListener('click', saveEditedEntry);
+  document.getElementById('abbrechen-btn').addEventListener('click', cancelEdit);
+}
+
+function setupInitialEntries() {
+  document.querySelectorAll('.button-group').forEach(group => {
+    if (!group.dataset.id) {
+      group.dataset.id = Date.now().toString();
+    }
+    setupActionButtons(group);
+  });
+  setupErklaerungButtons();
+}
+
+function loadEntries() {
+  const savedEntries = localStorage.getItem(STORAGE_KEY);
+  if (savedEntries) {
+    const entries = JSON.parse(savedEntries);
+    entries.forEach(entry => {
+      const exists = Array.from(document.querySelectorAll('.button-group button'))
+        .some(btn => btn.textContent === entry.begriff);
+      if (!exists) {
+        createEntryElement(entry.id, entry.begriff, entry.leute, entry.juristen, entry.hintergrund);
+      }
+    });
+  }
+}
+
+function addEntry() {
+  const begriff = document.getElementById('Begriff').value.trim();
+  const erklaerungText = document.getElementById('Erklaerung').value.trim();
+
+  if (begriff && erklaerungText) {
+    const { leute, juristen, hintergrund } = parseErklaerung(erklaerungText);
+    const id = Date.now().toString();
+
+    createEntryElement(id, begriff, leute, juristen, hintergrund);
+    saveToLocalStorage(id, begriff, leute, juristen, hintergrund);
+
+<!-- Formular zurücksetzen -->
+    document.getElementById('Begriff').value = '';
+    document.getElementById('Erklaerung').value =
+      'Was die Leute denken: \nWas Juristen meinen: \nHintergrund: ';
+  } else {
+    alert('Bitte Begriff und Erklärung ausfüllen!');
+  }
+}
+
+function createEntryElement(id, begriff, leute, juristen, hintergrund) {
+  const gruppe = document.createElement('div');
+  gruppe.className = 'button-group';
+  gruppe.dataset.id = id;
+
+  const button = document.createElement('button');
+  button.textContent = begriff;
+
+  const erklaerungDiv = document.createElement('div');
+  erklaerungDiv.className = 'Erklaerung';
+  erklaerungDiv.style.display = 'none';
+  erklaerungDiv.innerHTML = `
+    <p><strong>Was die Leute denken:</strong> ${leute}</p>
+    <p><strong>Was Juristen meinen:</strong> ${juristen}</p>
+    <p><strong>Hintergrund:</strong> ${hintergrund}</p>
+    <div class="erklaerung-actions">
+      <button class="edit-btn">Bearbeiten</button>
+      <button class="delete-btn">Löschen</button>
+    </div>
+  `;
+
+  gruppe.appendChild(button);
+  gruppe.appendChild(erklaerungDiv);
+  document.querySelector('.main').insertBefore(gruppe, document.querySelector('.Eintrag'));
+
+  setupActionButtons(gruppe);
+  setupErklaerungButtons();
+}
+
+function setupActionButtons(entryElement) {
+  const editBtn = entryElement.querySelector('.edit-btn');
+  const deleteBtn = entryElement.querySelector('.delete-btn');
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (confirm('Eintrag wirklich löschen?')) {
+        deleteEntry(entryElement.dataset.id);
+        entryElement.remove();
+      }
+    });
+  }
+
+  if (editBtn) {
+    editBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      editEntry(entryElement);
+    });
+  }
+}
+
+function editEntry(entryElement) {
+  currentEditId = entryElement.dataset.id;
+  const buttonText = entryElement.querySelector('button').textContent;
+  const erklaerungDiv = entryElement.querySelector('.Erklaerung');
+
+  const leute = erklaerungDiv.querySelector('p:nth-child(1)').textContent.replace('Was die Leute denken:', '').trim();
+  const juristen = erklaerungDiv.querySelector('p:nth-child(2)').textContent.replace('Was Juristen meinen:', '').trim();
+  const hintergrund = erklaerungDiv.querySelector('p:nth-child(3)').textContent.replace('Hintergrund:', '').trim();
+
+  document.getElementById('Begriff').value = buttonText;
+  document.getElementById('Erklaerung').value =
+    `Was die Leute denken: ${leute}\nWas Juristen meinen: ${juristen}\nH ntergrund: ${hintergrund}`;
+
+  document.getElementById('hinzufuegen-btn').style.display = 'none';
+  document.getElementById('speichern-btn').style.display = 'inline-block';
+  document.getElementById('abbrechen-btn').style.display = 'inline-block';
+
+  entryElement.classList.add('editing');
+  entryElement.style.display = 'none';
+}
+
+function saveEditedEntry() {
+  const begriff = document.getElementById('Begriff').value.trim();
+  const erklaerungText = document.getElementById('Erklaerung').value.trim();
+
+  if (begriff && erklaerungText) {
+    const { leute, juristen, hintergrund } = parseErklaerung(erklaerungText);
+    const entryElement = document.querySelector(`.button-group[data-id="${currentEditId}"]`);
+
+    entryElement.querySelector('button').textContent = begriff;
+    const erklaerungDiv = entryElement.querySelector('.Erklaerung');
+    erklaerungDiv.innerHTML = `
+      <p><strong>Was die Leute denken:</strong> ${leute}</p>
+      <p><strong>Was Juristen meinen:</strong> ${juristen}</p>
+      <p><strong>Hintergrund:</strong> ${hintergrund}</p>
+      <div class="erklaerung-actions">
+        <button class="edit-btn">Bearbeiten</button>
+        <button class="delete-btn">Löschen</button>
+      </div>
+    `;
+
+    setupActionButtons(entryElement);
+    saveToLocalStorage(currentEditId, begriff, leute, juristen, hintergrund);
+    cancelEdit();
+  } else {
+    alert('Bitte Begriff und Erklärung ausfüllen!');
+  }
+}
+
+function cancelEdit() {
+  currentEditId = null;
+  document.getElementById('Begriff').value = '';
+  document.getElementById('Erklaerung').value =
+    'Was die Leute denken: \nWas Juristen meinen: \nHintergrund: ';
+
+  document.getElementById('hinzufuegen-btn').style.display = 'inline-block';
+  document.getElementById('speichern-btn').style.display = 'none';
+  document.getElementById('abbrechen-btn').style.display = 'none';
+
+  const editingEntry = document.querySelector('.button-group.editing');
+  if (editingEntry) {
+    editingEntry.classList.remove('editing');
+    editingEntry.style.display = 'flex';
+  }
+}
+
+function deleteEntry(id) {
+  const savedEntries = localStorage.getItem(STORAGE_KEY);
+  if (savedEntries) {
+    const entries = JSON.parse(savedEntries);
+    const updatedEntries = entries.filter(entry => entry.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedEntries));
+  }
+}
+
+function saveToLocalStorage(id, begriff, leute, juristen, hintergrund) {
+  let entries = [];
+  const savedEntries = localStorage.getItem(STORAGE_KEY);
+
+  if (savedEntries) {
+    entries = JSON.parse(savedEntries);
+    const existingIndex = entries.findIndex(entry => entry.id === id);
+    if (existingIndex !== -1) {
+      entries[existingIndex] = { id, begriff, leute, juristen, hintergrund };
+    } else {
+      entries.push({ id, begriff, leute, juristen, hintergrund });
+    }
+  } else {
+    entries.push({ id, begriff, leute, juristen, hintergrund });
+  }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+}
+
+function parseErklaerung(erklaerungText) {
+  const lines = erklaerungText.split('\n');
+  let leute = '';
+  let juristen = '';
+  let hintergrund = '';
+
+  lines.forEach(line => {
+    if (line.startsWith('Was die Leute denken:')) {
+      leute = line.replace('Was die Leute denken:', '').trim();
+    } else if (line.startsWith('Was Juristen meinen:')) {
+      juristen = line.replace('Was Juristen meinen:', '').trim();
+    } else if (line.startsWith('Hintergrund:')) {
+      hintergrund = line.replace('Hintergrund:', '').trim();
+    }
+  });
+
+  return { leute, juristen, hintergrund };
+}
+
+function setupErklaerungButtons() {
+  document.querySelectorAll('.button-group button').forEach(button => {
+    button.removeEventListener('click', toggleErklaerung);
+    button.addEventListener('click', toggleErklaerung);
+  });
+}
+
+function toggleErklaerung() {
+  const erklaerung = this.nextElementSibling;
+  erklaerung.style.display =
+    erklaerung.style.display === 'none' || !erklaerung.style.display ? 'block' : 'none';
+}
+
+
+</script>
+
+</body>
+</html>
